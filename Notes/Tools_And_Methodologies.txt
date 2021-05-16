@@ -6,11 +6,59 @@ Step 1: NMap scan on target server
     - [nmap command]
 Step 2: Add machine name to /etc/hosts
 Step 3: Use Burp (and other tools) to analyze client-side attack surface
-    - Pages/Directories
-    - Parameters
-    - 
 Step 4: 
 
 ## Burp Tips and Tricks
 
 - Use Comparer to see changes in Words/Bytes between requests
+
+## Source Code Recovery
+
+- OSWE focuses on Java and .NET source code recovery
+
+### .NET
+
+- Decompiler/Debugger -- dnSpy
+- Drag EXE file into dnSpy
+- To view source code of exe, select [FILENAME] > dotnetapp > Program
+- Cross-References
+    ~ Debugger can be used to find cross-references to a particular variable or function
+    EX:
+        1. Identify base64 encoded value in HTTP request through Burp
+        2. Assume function(s) name(s) include "base64" or something similar
+        3. Bring all .NET modules loaded by the application into dnSpy
+        4. Search for Methods containing "base64" in the name
+        5. Right-click > Analyze
+        6. Look through Used By / Uses to find interesting methods/functions
+        7. Double-click on cross-reference to see source code of method/function
+- Modifying Assemblies
+    ~ Debugger can modify assemblies
+    Why?
+        1. Add debugging statements to a log file
+        2. Alter attributes to help debug the target application
+    EX:
+        1. Right-click on Program > Edit Class
+        2. Edit as needed
+        3. Left-click Compile
+        4. File > Save All > OK to overwrite the original version
+
+### Java
+
+- Decompiler/Debugger -- JD-GUI
+- JAR = Java ARchive (How did I not know this???)
+- Drag JAR file into JD-GUI
+- Search using the tab on the top of the GUI
+
+## Source Code Analysis
+
+- Automated tools can be used to find low-hanging fruit and save time
+- Automated tools also have a high rate of false positives, but these can also identify dead spots in code
+- Keep the following in mind:
+    1. If possible, always enable database query logging
+    2. Use debug print statements (can be added with decompiler)
+    3. If possible, live-debug the compiled application
+        ~ dnSpy for .NET
+        ~ Eclipse IDE for Java
+    4. First check unauthenticated areas of an app, then focus on areas that will get less attention (admin panel, etc.)
+    5. Always investigate how the app sanitizes user input
+    6. (More to come!)

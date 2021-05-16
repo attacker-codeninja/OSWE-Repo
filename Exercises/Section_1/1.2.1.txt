@@ -1,0 +1,6 @@
+# 1.2.1 Exercise
+
+## Repeat the steps outlined in this section and make sure you can intercept HTTP requests from
+the proof-of-concept script.
+
+<a href="../../Scripts/get_request.py>get_requests.py</a>

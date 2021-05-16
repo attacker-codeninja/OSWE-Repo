@@ -1,2 +1,4 @@
 # High-Level Exam Notes
 
+- ManageEngine RDP username is incorrect in Lab documentation.  
+    Real username: administrator (not capitalized)

@@ -1,0 +1,25 @@
+# Useful Commands
+
+## Compile C# File
+[DIRECTORY_TO_.NET]\csc.exe [.CS_FILE]
+EX: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe test.cs
+
+## Compile .java to Class
+javac -source [VERSION_OF_.JAVA_FILE] -target [DESIRED_VERSION_OF_.CLASS_FILE] [.JAVA_FILE]
+EX:  javac -source 1.8 -target 1.8 test.java
+
+## Build Java Manifest
+mkdir META-INF; echo "Main-Class: [JAVA_CLASS]" > META-INF/MANIFEST.MF
+EX: mkdir META-INF; echo "Main-Class: test" > META-INF/MANIFEST.MF
+
+## Create JAR File
+jar cmvf META-INF/MANIFEST.MF [JAR_FILE] [CLASS_FILE]
+EX: jar cmvf META-INF/MANIFEST.MF test.jar test.class
+
+## Start SMB Server
+sudo impacket-smbserver [SHARE_NAME] [SHARE_PATH]
+EX: sudo impacket-server test .
+
+## RDP to Machine
+xfreerdp +nego +sec-rdp +sec-tls +sec-nla /d: /u: /p: /v:[MACHINE_NAME] /u:[USERNAME] /p:[PASSWORD] /size:1180x708
+EX: xfreerdp +nego +sec-rdp +sec-tls +sec-nla /d: /u: /p: /v:manageengine /u:administrator /p:studentlab /size:1180x708
