@@ -1,0 +1,16 @@
+# Tools and Methodologies
+
+## High-Level Methodology
+
+Step 1: NMap scan on target server
+    - [nmap command]
+Step 2: Add machine name to /etc/hosts
+Step 3: Use Burp (and other tools) to analyze client-side attack surface
+    - Pages/Directories
+    - Parameters
+    - 
+Step 4: 
+
+## Burp Tips and Tricks
+
+- Use Comparer to see changes in Words/Bytes between requests
