@@ -9,8 +9,11 @@ long_options = ["url="]
 try:
     arguments, values = getopt.getopt(argument_list, short_options, long_options)
 except:
-    print("Please enter a URL with the -u or --url flag.  Exiting...")
     sys.exit(2)
+
+if len(sys.argv) <= 1:
+    print('Usage: python3 get_request.py (-u|--url) [URL]')
+    exit(1)
 
 for current_argument, current_value in arguments:
     if current_argument in ("-u", "--url"):
